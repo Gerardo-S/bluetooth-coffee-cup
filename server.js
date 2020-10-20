@@ -35,3 +35,4 @@ db.sequelize.sync().then(() => {
   });
 });
 // Travis Test
+// Add All 
