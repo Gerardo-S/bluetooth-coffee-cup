@@ -40,16 +40,14 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  //   Post.associate = function(models) {
-  //     // We're saying that a Post should belong to an Author
-  //     // A Post can't be created without an Author due to the foreign key constraint
-  //     models.Post.belongsTo(models.Author, {
-  //       onDelete: "CASCADE",
-  //       foreignKey: {
-  //         allowNull: false
-  //       }
-  //     });
-  //   };
+  Game.associate = function(models) {
+    models.Game.belongsTo(models.User, {
+      onDelete: "CASCADE",
+      foreignKey: {
+        allowNull: false
+      }
+    });
+  };
 
   return Game;
 };
