@@ -26,6 +26,7 @@ module.exports = function(app) {
     // if (req.user) {
     //   res.redirect("/games");
     // }
+    console.log(req.query);
     res.render("games");
   });
 
@@ -42,5 +43,4 @@ module.exports = function(app) {
   app.get("/members", isAuthenticated, (req, res) => {
     res.render("members");
   });
-
 };
