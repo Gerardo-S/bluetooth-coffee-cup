@@ -26,6 +26,7 @@ module.exports = function(app) {
     // if (req.user) {
     //   res.redirect("/games");
     // }
+    console.log(req.query);
     res.render("games");
   });
 
