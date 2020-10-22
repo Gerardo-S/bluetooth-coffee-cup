@@ -12,12 +12,31 @@ module.exports = function(sequelize, DataTypes) {
         isEmail: true
       }
     },
+
+    first_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isAlpha: true,
+        len: [2, 30]
+      }
+    },
+
+    last_name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        isAlpha: true,
+        len: [2, 30]
+      }
+    },
     // The password cannot be null
     password: {
       type: DataTypes.STRING,
       allowNull: false
     }
   });
+
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
   User.prototype.validPassword = function(password) {
     return bcrypt.compareSync(password, this.password);
@@ -31,5 +50,11 @@ module.exports = function(sequelize, DataTypes) {
       null
     );
   });
+
+  User.associate = function(models) {
+    models.User.hasMany(models.Game, {
+      onDelete: "cascade"
+    });
+  };
   return User;
 };
