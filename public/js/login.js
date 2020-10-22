@@ -1,4 +1,7 @@
 $(document).ready(() => {
+  const baseSearchUrl = "https://api.rawg.io/api/games?key=";
+  const apiKey = "72506a506521467da93378cfb7fc9829";
+  let searchString;
   // Getting references to our form and inputs
   const loginForm = $("form.login");
   const emailInput = $("input#email-input");
@@ -36,4 +39,51 @@ $(document).ready(() => {
         console.log(err);
       });
   }
+
+  $(".game-submit").on("click", event => {
+    event.preventDefault();
+    const searchTerm = $("#searchGames")
+      .val()
+      .trim();
+
+    if (!searchTerm) {
+      return;
+    }
+    alert("zelda");
+    console.log(searchTerm);
+    searchString = searchTerm;
+    const searchQueryURL =
+      baseSearchUrl +
+      apiKey +
+      "&search=" +
+      searchString +
+      "&ordering=-rating&exclude_additions=true";
+
+    $.get({
+      url: searchQueryURL,
+      method: "GET"
+    })
+      .then(function(data) {
+        console.log(data.results);
+        console.log(searchQueryURL);
+
+        const games = data.results.map(game => {
+          return {
+            name: game.name,
+            background_image: game.background_image,
+            id: game.id,
+            releases: game.released
+          };
+        });
+        $.post({
+          url: `/api/games/${searchString}`,
+          data: { data: games }
+        }).then(res => {
+          console.log(res);
+        });
+      })
+      .catch(err => {
+        console.log(error);
+      });
+  });
 });

@@ -50,4 +50,9 @@ module.exports = function(app) {
       });
     }
   });
+
+  app.post("/api/games/:searchTerm", (req, res) => {
+    console.log(req.body);
+    res.render("games", req.body);
+  });
 };
