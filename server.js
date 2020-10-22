@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static("public"));
 
-if(!process.env.SERVER_SECRET){
+if (!process.env.SERVER_SECRET) {
   console.log("Missing SERVER_SECRET env variable. Shutting down.");
   process.exit(1);
 }
