@@ -8,13 +8,6 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
 
-    publisher: {
-      type: DataTypes.STRING,
-      validate: {
-        len: [2, 30]
-      }
-    },
-
     published_year: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -23,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
 
-    plot_summary: {
+    genre: {
       type: DataTypes.TEXT,
       allowNull: false,
       len: [2, 50]
