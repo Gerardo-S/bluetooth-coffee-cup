@@ -17,27 +17,25 @@
 
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <h1 class="display-4">WELCOME, <span class="member-name"></span></h1>
-    <p class="lead">DATA based on profile? Something cool? Avatar? BIO?</p>
+    <h1 class="display-4">Welcome, <span class="member-name"></span>!</h1>
+    <p class="lead">View your Top 10, Find your Friends!</p>
+          <form>
+        <form>
+          <div class="form-group">
+            <label for="userSearch">Where are your Friends?</label>
+            <input type="user" class="form-control" id="userSearch" aria-describedby="userSearch">
+            <small id="userSearch" class="form-text text-muted">Search an email address of a KIWI user.</small>
+          </div>
+          <button type="button" class="btn btn-success">LOOK</button>
+        </form>
   </div>
 </div>
 
 <div class="container">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <h2>Games DATA down here... </h2>
-      <div class="dropdown">
-        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          TOP 10 Games
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-          <button class="dropdown-item" type="button">GAME</button>
-          <button class="dropdown-item" type="button">GAME</button>
-          <button class="dropdown-item" type="button">GAME</button>
-        </div>
-      </div>
-    </div>
+  <h1>Your 10 Favorite Games:</h1>
+
+  <div id="displayResults">
+
   </div>
 
   <footer class="footer">
