@@ -45,10 +45,11 @@ module.exports = function(app) {
       // The user is not logged in, send back an empty object
       res.json({});
     } else {
+      const userId = req.user.id;
       // console.log(req.user);
       db.User.findOne({
         Where: {
-          id: req.user.id
+          id: userId
         },
         include: [db.Game]
       }).then(dbUser => {
