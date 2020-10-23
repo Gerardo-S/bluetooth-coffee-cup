@@ -48,7 +48,7 @@ $(document).ready(() => {
         // button.attr("data-genre", element.tags[0].name);
         button.attr("data-released", element.released);
         button.attr("data-id", element.id);
-        button.attr("data-link", "https://rawg.io/games/" + element.name);
+        button.attr("data-link", "https://rawg.io/games/" + element.slug);
         const save = $("<i>");
         save.addClass("far fa-save");
         // <i class="far fa-save"></i>
@@ -68,23 +68,28 @@ $(document).ready(() => {
 
   $(document).on("click", event => {
     event.preventDefault();
-    alert($(this).attr("data-name"));
-    //   console.log($(this).data - name);
-    //   console.log($(this).data - image);
+    console.log($(event.target).data("link"));
+    const gameYear = parseInt(
+      $(event.target)
+        .data("released")
+        .slice(0, 4)
+    );
 
-    // $.post("/api/addgame", {
-    //   name: $(this).data - name,
-    //   link_to_screenshot: $(this).data - image,
-    //   link_to_game: $(this).data - link,
-    //   id: $(this).data - id,
-    //   published_year: $(this).data - released,
-    //   genre: "game"
-    // })
-    //   .then(() => {
-    //     console.log("hi");
-    //   })
-    //   .catch(err => {
-    //     console.log(err);
-    //   });
+    $.post("/api/addgame", {
+      name: $(event.target)
+        .data("name")
+        .slice(0, 30),
+      link_to_screenshot: $(event.target).data("image"),
+      link_to_game: $(event.target).data("link"),
+      id: $(event.target).data("id"),
+      published_year: gameYear,
+      genre: "game"
+    })
+      .then(() => {
+        console.log("hi");
+      })
+      .catch(err => {
+        console.log(err);
+      });
   });
 });
