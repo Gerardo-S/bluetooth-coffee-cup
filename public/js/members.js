@@ -9,7 +9,7 @@ $(document).ready(() => {
         const newRow = $("<div>").appendTo($("#displayResults"));
         // newRow.attr("class", "row");
         const newCol = $("<div>").prependTo(newRow);
-        newCol.attr("class", "col-12");
+        newCol.attr("class", "col");
         // Card
         const newCard = $("<div>").prependTo(newCol);
         newCard.attr("class", "card border-success mb-3");

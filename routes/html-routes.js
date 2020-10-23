@@ -23,19 +23,10 @@ module.exports = function(app) {
   });
 
   app.get("/games", (req, res) => {
-    // If the user already has an account send them to the members page
-    // if (req.user) {
-    //   res.redirect("/games");
-    // }
-    // console.log(req.query);
     res.render("games");
   });
 
   app.get("/users", (req, res) => {
-    // If the user already has an account send them to the members page
-    // if (req.user) {
-    //   res.redirect("/users");
-    // }
     res.render("users");
   });
 
