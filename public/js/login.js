@@ -1,7 +1,4 @@
 $(document).ready(() => {
-  const baseSearchUrl = "https://api.rawg.io/api/games?key=";
-  const apiKey = "72506a506521467da93378cfb7fc9829";
-  let searchString;
   // Getting references to our form and inputs
   const loginForm = $("form.login");
   const emailInput = $("input#email-input");
