@@ -16,7 +16,7 @@ $(document).ready(() => {
       console.log(searchQueryURL);
       console.log(data.results[0]);
       data.results.forEach(element => {
-        const newRow = $("<div>").prependTo($("#displayResults"));
+        const newRow = $("<div>").appendTo($("#displayResults"));
         // newRow.attr("class", "row");
         const newCol = $("<div>").prependTo(newRow);
         newCol.attr("class", "col-4");
