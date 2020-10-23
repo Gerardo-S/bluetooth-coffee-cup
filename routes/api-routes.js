@@ -40,48 +40,25 @@ module.exports = function(app) {
   });
 
   // Route for getting some data about our user to be used client side
-  // app.get("/api/user_data", (req, res) => {
-  //   if (!req.user) {
+  app.get("/api/user_data", (req, res) => {
+    if (!req.user) {
       // The user is not logged in, send back an empty object
-    //   res.json({});
-    // } else {
-    //   db.User.findOne({
-    //     where: {
-    //       id: req.params.id
-    //     },
-    //     include: [db.Game]
-    //   }).then(dbUser => {
-    //     res.json({
-    //       email: req.user.email,
-    //       id: req.user.id
-    //     });
-    //   });
-      // Otherwise send back the user's email and id
-      // Sending back a password, even a hashed password, isn't a good idea
-      // res.json({
-      //   email: req.user.email,
-      //   id: req.user.id
-      // });
-  //   }
-  // });
-
-  // app.post("/api/addgame", (req, res) => {
-  //   const userId = req.id;
-
-  //   db.Game.create({
-  //     name: req.body.name,
-  //     genre: req.body.genre,
-  //     published_year: req.body.published_year,
-  //     link_to_game: req.body.link_to_game,
-  //     link_to_screenshot: req.body.link_to_screenshot,
-  //     userId: userId
-  //   })
-  //     .then(() => {
-  //       res.end();
-  //     })
-
-  //     .catch(err => {
-  //       res.status(401).json(err);
-  //     });
-  // });
+      res.json({});
+    } else {
+      db.User.findOne({
+        Where: {
+          id: req.user.id
+        },
+        include: [db.Game]
+      }).then(dbUser => {
+        res.json({
+          id: dbUser.id,
+          email: dbUser.email,
+          first_name: dbUser.first_name,
+          last_name: dbUser.last_name,
+          Games: dbUser.Games
+        });
+      });
+    }
+  });
 };

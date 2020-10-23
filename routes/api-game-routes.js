@@ -21,4 +21,17 @@ module.exports = function(app) {
         res.status(401).json(err);
       });
   });
+  //  retrieve all games for user
+  app.get("/api/addgame", (req, res) => {
+    const query = {};
+    if (req.query.user_id) {
+      query.UserID = req.query.user_id;
+    }
+    db.Game.findAll({
+      Where: query
+      //   include: [db.User]
+    }).then(dbGame => {
+      res.json(dbGame);
+    });
+  });
 };
