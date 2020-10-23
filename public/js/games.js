@@ -70,9 +70,9 @@ $(document).ready(() => {
       published_year: data.published.slice(0, 3),
       link_to_game: "https://rawg.io/games/" + data.slug,
       link_to_screenshot: data.background_image
+    }).catch(err => {
+      console.log(err);
     });
   });
-  // .catch(err => {
-  //   console.log(err);
-  // });
+
 });
