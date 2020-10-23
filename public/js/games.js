@@ -66,14 +66,18 @@ $(document).ready(() => {
       console.log(err);
     });
 
-  $(document).on("click", event => {
+  $("#displayResults").on("click", event => {
     event.preventDefault();
     console.log($(event.target).data("link"));
-    const gameYear = parseInt(
-      $(event.target)
-        .data("released")
-        .slice(0, 4)
-    );
+    let gameYear;
+
+    if ($(event.target).data("released")) {
+      gameYear = parseInt(
+        $(event.target)
+          .data("released")
+          .slice(0, 4)
+      );
+    }
 
     $.post("/api/addgame", {
       name: $(event.target)
