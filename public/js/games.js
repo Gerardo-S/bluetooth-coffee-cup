@@ -19,7 +19,7 @@ $(document).ready(() => {
         const newRow = $("<div>").appendTo($("#displayResults"));
         // newRow.attr("class", "row");
         const newCol = $("<div>").prependTo(newRow);
-        newCol.attr("class", "col-4");
+        newCol.attr("class", "col");
         // Card
         const newCard = $("<div>").prependTo(newCol);
         newCard.attr("class", "card border-success mb-3");
@@ -41,7 +41,7 @@ $(document).ready(() => {
         const newFoot = $("<div>").appendTo(newCard);
         newFoot.addClass("card-footer bg-transparent border-success");
         // Save Button
-        const button = $("<button>");        
+        const button = $("<button>");
         button.text("SAVE TO TOP 10");
         button.attr("class", "save-btn btn btn-dark").appendTo(newCard);
         button.attr("data-name", element.name);
@@ -81,9 +81,7 @@ $(document).ready(() => {
     }
 
     $.post("/api/addgame", {
-      name: $(event.target)
-        .data("name")
-        .slice(0, 30),
+      name: $(event.target).data("name"),
       link_to_screenshot: $(event.target).data("image"),
       link_to_game: $(event.target).data("link"),
       id: $(event.target).data("id"),

@@ -1,6 +1,4 @@
 const db = require("../models");
-const passport = require("../config/passport");
-const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function(app) {
   app.post("/api/addgame", (req, res) => {
@@ -20,18 +18,5 @@ module.exports = function(app) {
       .catch(err => {
         res.status(401).json(err);
       });
-  });
-  //  retrieve all games for user
-  app.get("/api/addgame", (req, res) => {
-    const query = {};
-    if (req.query.user_id) {
-      query.UserID = req.query.user_id;
-    }
-    db.Game.findAll({
-      Where: query
-      //   include: [db.User]
-    }).then(dbGame => {
-      res.json(dbGame);
-    });
   });
 };
