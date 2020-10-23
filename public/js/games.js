@@ -19,7 +19,7 @@ $(document).ready(() => {
         // newRow.attr("class", "row");
         const newCol = $("<div>").prependTo(newRow);
         newCol.attr("class", "col-4");
-        // Card 
+        // Card
         const newCard = $("<div>").prependTo(newCol);
         newCard.attr("class", "card border-success mb-3");
         newCard.attr("style", "max-width: 18rem;");
@@ -42,30 +42,49 @@ $(document).ready(() => {
         // Save Button
         const button = $("<button>");
         button.text("SAVE TO TOP 10");
-        button.attr("id", "save-btn").appendTo(newCard);
+        button.attr("class", "save-btn").appendTo(newCard);
         button.attr("data-name", element.name);
         button.attr("data-image", element.background_image);
-        // button.attr("data-genre", element.element.tags[0].name);
+        // button.attr("data-genre", element.tags[0].name);
         button.attr("data-released", element.released);
+        button.attr("data-id", element.id);
+        button.attr("data-link", "https://rawg.io/games/" + element.name);
         const save = $("<i>");
         save.addClass("far fa-save");
         // <i class="far fa-save"></i>
         // Footer Contents
         const genre = $("<p>");
-        genre.text("Genre: " + element.tags[0].name);
+        // genre.text("Genre: " + element.tags[0].name);
         genre.appendTo(newFoot);
         const release = $("<p>");
         release.text("Released: " + element.released);
         release.appendTo(newFoot);
         save.prependTo(button);
       });
-      // name: element.name,
-      // background_image: element.background_image,
-      // id: element.id,
-      // releases: element.released
-      // genre: element.tags[0].name
     })
     .catch(err => {
       console.log(err);
     });
+
+  $(document).on("click", event => {
+    event.preventDefault();
+    alert($(this).attr("data-name"));
+    //   console.log($(this).data - name);
+    //   console.log($(this).data - image);
+
+    // $.post("/api/addgame", {
+    //   name: $(this).data - name,
+    //   link_to_screenshot: $(this).data - image,
+    //   link_to_game: $(this).data - link,
+    //   id: $(this).data - id,
+    //   published_year: $(this).data - released,
+    //   genre: "game"
+    // })
+    //   .then(() => {
+    //     console.log("hi");
+    //   })
+    //   .catch(err => {
+    //     console.log(err);
+    //   });
+  });
 });
