@@ -40,9 +40,9 @@ $(document).ready(() => {
         const newFoot = $("<div>").appendTo(newCard);
         newFoot.addClass("card-footer bg-transparent border-success");
         // Save Button
-        const button = $("<button>");
+        const button = $("<button>");        
         button.text("SAVE TO TOP 10");
-        button.attr("class", "save-btn").appendTo(newCard);
+        button.attr("class", "save-btn btn btn-dark").appendTo(newCard);
         button.attr("data-name", element.name);
         button.attr("data-image", element.background_image);
         // button.attr("data-genre", element.tags[0].name);

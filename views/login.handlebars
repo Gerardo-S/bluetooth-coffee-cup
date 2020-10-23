@@ -9,10 +9,6 @@
         Find Friends
       </a>
 
-
-
-
-
     </div>
   </div>
 </nav>
@@ -24,7 +20,7 @@
 
     <div class="row">
       <div class="col-md-3 ">
-        <form method="GET" action="/games"> 
+        <form method="GET" action="/games">
           <div class="form-group">
             <label for="searchGames">Search Games</label>
             <input type="text" name="query" class="form-control" id="searchGames" aria-describedby="gameSearch">
@@ -61,31 +57,32 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <h2>Login Form</h2>
+      <h2 class="display-4">KIWI Login</h2>
+      <p class="lead">Email and Password Below</p>
       <form class="login">
         <div class="form-group">
-          <label for="inputEmail">Email address</label>
+          {{!-- <label for="inputEmail">Email address</label> --}}
           <input type="email" class="form-control" id="email-input" placeholder="Email">
-        </div>
-        <div class="form-group">
-          <label for="inputPassword">Password</label>
+          {{!-- </div> --}}
+          {{!-- <div class="form-group"> --}}
+          {{!-- <label for="inputPassword">Password</label> --}}
           <input type="password" class="form-control" id="password-input" placeholder="Password">
         </div>
         <button type="submit" class="btn btn-default">Login</button>
       </form>
       <br />
-      <p>Or sign up <a href="/signup">here</a></p>
+      <p>Not a member? Sign up, <a href="/signup">here</a></p>
     </div>
-
-
-
-    <footer class="footer">
-      <div class="container">
-        <span class="text-center">GAME KIKI.</span>
-      </div>
-    </footer>
   </div>
+
+
+  <footer class="footer">
+    <div class="container">
+      <span class="text-center">GAME KIKI.</span>
+    </div>
+  </footer>
 </div>
+
 
 
 <script type="text/javascript" src="js/login.js"></script>
