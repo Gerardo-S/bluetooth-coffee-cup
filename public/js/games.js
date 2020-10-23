@@ -1,23 +1,19 @@
 $(document).ready(() => {
   const params = new URL(document.location).searchParams;
   const searchTerm = params.get("query");
-
   const searchQueryURL =
     "https://api.rawg.io/api/games?key=" +
     "72506a506521467da93378cfb7fc9829" +
     "&search=" +
     searchTerm +
     "&ordering=-rating&exclude_additions=true";
-
   if (!searchTerm) {
     return;
   }
-
   $.get(searchQueryURL)
     .then(data => {
       console.log(data.results);
       console.log(searchQueryURL);
-
       data.results.forEach(element => {
         const newRow = $("<div>").prependTo($("#displayResults"));
         // newRow.attr("class", "row");
@@ -63,8 +59,6 @@ $(document).ready(() => {
         release.appendTo(newFoot);
         save.prependTo(button);
       });
-
-
       // name: element.name,
       // background_image: element.background_image,
       // id: element.id,
