@@ -43,6 +43,17 @@ $(document).ready(() => {
         // Card Footer
         const newFoot = $("<div>").appendTo(newCard);
         newFoot.addClass("card-footer bg-transparent border-success");
+        // Save Button
+        const button = $("<button>");
+        button.text("SAVE TO TOP 10");
+        button.attr("id", "save-btn").appendTo(newCard);
+        button.attr("data-name", element.name);
+        button.attr("data-image", element.background_image);
+        // button.attr("data-genre", element.element.tags[0].name);
+        button.attr("data-released", element.released);
+        const save = $("<i>");
+        save.addClass("far fa-save");
+        // <i class="far fa-save"></i>
         // Footer Contents
         const genre = $("<p>");
         genre.text("Genre: " + element.tags[0].name);
@@ -50,6 +61,7 @@ $(document).ready(() => {
         const release = $("<p>");
         release.text("Released: " + element.released);
         release.appendTo(newFoot);
+        save.prependTo(button);
       });
 
 
