@@ -1,23 +1,19 @@
 $(document).ready(() => {
   const params = new URL(document.location).searchParams;
   const searchTerm = params.get("query");
-
   const searchQueryURL =
     "https://api.rawg.io/api/games?key=" +
     "72506a506521467da93378cfb7fc9829" +
     "&search=" +
     searchTerm +
     "&ordering=-rating&exclude_additions=true";
-
   if (!searchTerm) {
     return;
   }
-
   $.get(searchQueryURL)
     .then(data => {
       console.log(data.results);
       console.log(searchQueryURL);
-
       data.results.forEach(element => {
         const newRow = $("<div>").prependTo($("#displayResults"));
         // newRow.attr("class", "row");
@@ -43,6 +39,17 @@ $(document).ready(() => {
         // Card Footer
         const newFoot = $("<div>").appendTo(newCard);
         newFoot.addClass("card-footer bg-transparent border-success");
+        // Save Button
+        const button = $("<button>");
+        button.text("SAVE TO TOP 10");
+        button.attr("id", "save-btn").appendTo(newCard);
+        button.attr("data-name", element.name);
+        button.attr("data-image", element.background_image);
+        // button.attr("data-genre", element.element.tags[0].name);
+        button.attr("data-released", element.released);
+        const save = $("<i>");
+        save.addClass("far fa-save");
+        // <i class="far fa-save"></i>
         // Footer Contents
         const genre = $("<p>");
         genre.text("Genre: " + element.tags[0].name);
@@ -50,9 +57,8 @@ $(document).ready(() => {
         const release = $("<p>");
         release.text("Released: " + element.released);
         release.appendTo(newFoot);
+        save.prependTo(button);
       });
-
-
       // name: element.name,
       // background_image: element.background_image,
       // id: element.id,
@@ -62,17 +68,4 @@ $(document).ready(() => {
     .catch(err => {
       console.log(err);
     });
-
-  $(".selectButton").on("click", event => {
-    $.post("/api/addgame", {
-      name: $(this).data("id"),
-      genre: data.tags[0].name,
-      published_year: data.published.slice(0, 3),
-      link_to_game: "https://rawg.io/games/" + data.slug,
-      link_to_screenshot: data.background_image
-    }).catch(err => {
-      console.log(err);
-    });
-  });
-
 });
