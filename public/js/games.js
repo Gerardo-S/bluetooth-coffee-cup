@@ -12,9 +12,9 @@ $(document).ready(() => {
   }
   $.get(searchQueryURL)
     .then(data => {
-      console.log(data.results);
-      console.log(searchQueryURL);
-      console.log(data.results[0]);
+      // console.log(data.results);
+      // console.log(searchQueryURL);
+      // console.log(data.results[0]);
       data.results.forEach(element => {
         const newRow = $("<div>").prependTo($("#displayResults"));
         // newRow.attr("class", "row");
@@ -69,7 +69,7 @@ $(document).ready(() => {
 
   $("#displayResults").on("click", event => {
     event.preventDefault();
-    console.log($(event.target).data("link"));
+    // console.log($(event.target).data("link"));
     let gameYear;
 
     if ($(event.target).data("released")) {
