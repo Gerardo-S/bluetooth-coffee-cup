@@ -51,7 +51,8 @@ $(document).ready(() => {
 
         // If there's an error, handle it by throwing up a bootstrap alert
       })
-      .catch(handleLoginErr);
+      .catch(err => { console.log(err) });
+
   }
 
   function handleLoginErr(err) {
