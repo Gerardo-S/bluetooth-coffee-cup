@@ -46,7 +46,7 @@ module.exports = function(app) {
       res.json({});
     } else {
       db.User.findOne({
-        Where: {
+        where: {
           id: req.user.id
         },
         include: [db.Game]

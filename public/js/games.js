@@ -12,17 +12,17 @@ $(document).ready(() => {
   }
   $.get(searchQueryURL)
     .then(data => {
-      console.log(data.results);
-      console.log(searchQueryURL);
-      console.log(data.results[0]);
+      // console.log(data.results);
+      // console.log(searchQueryURL);
+      // console.log(data.results[0]);
       data.results.forEach(element => {
         const newRow = $("<div>").appendTo($("#displayResults"));
         // newRow.attr("class", "row");
         const newCol = $("<div>").prependTo(newRow);
-        newCol.attr("class", "col-12");
+        newCol.attr("class", "col");
         // Card
         const newCard = $("<div>").prependTo(newCol);
-        newCard.attr("class", "card border-success mb-3");
+        newCard.attr("class", "card h-100 text-center border-success mb-3");
         newCard.attr("style", "max-width: 18rem;");
         // Card Header
         const newP = $("<div>");
@@ -36,12 +36,14 @@ $(document).ready(() => {
         // Center Image
         const image = $("<img>").appendTo(newBody);
         image.attr("src", element.background_image);
-        image.attr("width", 200 + "height", 200);
+        image.attr("height", 200);
+        image.css({ "object-fit": "contain" });
+        image.addClass("card-img");
         // Card Footer
         const newFoot = $("<div>").appendTo(newCard);
         newFoot.addClass("card-footer bg-transparent border-success");
         // Save Button
-        const button = $("<button>");        
+        const button = $("<button>");
         button.text("SAVE TO TOP 10");
         button.attr("class", "save-btn btn btn-dark").appendTo(newCard);
         button.attr("data-name", element.name);
@@ -69,7 +71,7 @@ $(document).ready(() => {
 
   $("#displayResults").on("click", event => {
     event.preventDefault();
-    console.log($(event.target).data("link"));
+    // console.log($(event.target).data("link"));
     let gameYear;
 
     if ($(event.target).data("released")) {
@@ -81,9 +83,7 @@ $(document).ready(() => {
     }
 
     $.post("/api/addgame", {
-      name: $(event.target)
-        .data("name")
-        .slice(0, 30),
+      name: $(event.target).data("name"),
       link_to_screenshot: $(event.target).data("image"),
       link_to_game: $(event.target).data("link"),
       id: $(event.target).data("id"),
