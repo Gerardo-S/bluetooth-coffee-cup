@@ -65,6 +65,10 @@ $(document).ready(() => {
         save.prependTo(button);
       });
     })
+    .then(() => {
+      $("#loading").hide();
+      // If there's an error, log the error
+    })
     .catch(err => {
       console.log(err);
     });
@@ -97,4 +101,5 @@ $(document).ready(() => {
         console.log(err);
       });
   });
+
 });
