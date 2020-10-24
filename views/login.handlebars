@@ -30,13 +30,13 @@
         </form>
       </div>
       <div class="col-md-3 ">
-        <form>
+        <form method="GET" action="/users">
           <div class="form-group">
             <label for="userSearch">Know someone?</label>
-            <input type="user" class="form-control" id="userSearch" aria-describedby="userSearch">
+            <input type="email" name="query" class="form-control" id="userSearch" aria-describedby="userSearch">
             <small id="userSearch" class="form-text text-muted">Search an email address of a KIWI user.</small>
           </div>
-          <button type="button" class="btn btn-success">Submit</button>
+          <button type="submit" class="btn btn-success">Submit</button>
         </form>
       </div>
     </div>

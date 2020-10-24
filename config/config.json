@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "password",
+    "password": "passwordA1",
     "database": "game_kiwidb",
     "host": "127.0.0.1",
     "dialect": "mysql"

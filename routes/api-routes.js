@@ -61,4 +61,24 @@ module.exports = function(app) {
       });
     }
   });
+
+  // Route for searching for a user id
+  app.get("/api/user_search/:email", (req, res) => {
+    const emailFix = req.params.email.replace(/%40/i, "@");
+    console.log(emailFix);
+
+    db.User.findOne({
+      where: {
+        email: emailFix
+      }
+    }).then(dbUser => {
+      console.log(dbUser);
+      res.json({
+        id: dbUser.id,
+        email: dbUser.email,
+        first_name: dbUser.first_name,
+        last_name: dbUser.last_name
+      });
+    });
+  });
 };
