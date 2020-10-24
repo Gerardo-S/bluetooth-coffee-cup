@@ -22,7 +22,7 @@ $(document).ready(() => {
         newCol.attr("class", "col");
         // Card
         const newCard = $("<div>").prependTo(newCol);
-        newCard.attr("class", "card border-success mb-3");
+        newCard.attr("class", "card h-100 text-center border-success mb-3");
         newCard.attr("style", "max-width: 18rem;");
         // Card Header
         const newP = $("<div>");
@@ -36,7 +36,9 @@ $(document).ready(() => {
         // Center Image
         const image = $("<img>").appendTo(newBody);
         image.attr("src", element.background_image);
-        image.attr("width", 200 + "height", 200);
+        image.attr("height", 200);
+        image.css({ "object-fit": "contain" });
+        image.addClass("card-img");
         // Card Footer
         const newFoot = $("<div>").appendTo(newCard);
         newFoot.addClass("card-footer bg-transparent border-success");
