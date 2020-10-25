@@ -65,11 +65,11 @@ API provided by: [RAWg IO.](https://rawg.io/)
 
 Landing Page:
 
-![roster](assets/roster.png)
+![Game Kiwi : Landing Page](public/assets/land.png)
 
 Search Games Page:
 
-![roster](assets/roster.png)
+![Game Kiwi : Search Page](public/assets/search.png)
 
 
 
