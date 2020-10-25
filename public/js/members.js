@@ -31,6 +31,13 @@ $(document).ready(() => {
         const newFoot = $("<div>").appendTo(newCard);
         newFoot.addClass("card-footer bg-transparent border-success");
         // <i class="far fa-save"></i>
+        // Save Button
+        const button = $("<button>");
+        button.text(" Remove from Top 10");
+        button.attr("class", "del-btn btn btn-dark").appendTo(newCard);
+        const del = $("<i>");
+        del.addClass("fas fa-dumpster");
+        del.prependTo(button);
         // Footer Contents
         const genre = $("<p>");
         // genre.text("Genre: " + element.tags[0].name);
