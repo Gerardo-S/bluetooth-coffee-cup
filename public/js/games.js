@@ -1,4 +1,12 @@
 $(document).ready(() => {
+  var $loading = $("#loading").hide();
+  $(document)
+    .ajaxStart(function () {
+      $loading.show();
+    })
+    .ajaxStop(function () {
+      $loading.hide();
+    });
   const params = new URL(document.location).searchParams;
   const searchTerm = params.get("query");
   const searchQueryURL =
@@ -71,6 +79,9 @@ $(document).ready(() => {
 
   $("#displayResults").on("click", event => {
     event.preventDefault();
+
+    console.log($(this));
+    // $(this).attr("display", "none")
     // console.log($(event.target).data("link"));
     let gameYear;
 
@@ -91,7 +102,7 @@ $(document).ready(() => {
       genre: "game"
     })
       .then(() => {
-        console.log("hi");
+        console.log("hola");
       })
       .catch(err => {
         console.log(err);
