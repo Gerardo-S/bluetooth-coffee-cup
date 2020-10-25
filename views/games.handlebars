@@ -17,25 +17,29 @@
   <div class="container">
     <h1 class="display-4">Find your Favorites! <span class="member-name"></span></h1>
     <p class="lead">Search Games below. Members can add to their profiles, too!</p>
-          <form method="GET" action="/games"> 
-        <div class="form-group">
-          <label for="searchGames">Find Games</label>
-          <input type="text" name="query" class="form-control" id="searchGames" aria-describedby="gameSearch">
-          <small id="gameSearch" class="form-text text-muted">Search something nostalgic!</small>
-        </div>
-        <button type="submit" class="btn btn-success">SEARCH</button>
-        
-      </form>
+    <form method="GET" action="/games">
+      <div class="form-group">
+        <label for="searchGames">Find Games</label>
+        <input type="text" name="query" class="form-control" id="searchGames" aria-describedby="gameSearch">
+        <small id="gameSearch" class="form-text text-muted">Search something nostalgic!</small>
+      </div>
+      <button type="submit" class="btn btn-success">SEARCH</button>
+
+    </form>
   </div>
 </div>
 <div class="container">
-  <h1 class="display-4">Game Results:</h1>
-  
+  <h1 class="display-4">Game Results:
+    <div class="spinner-border text-success" id="loading" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </h1>
 
-  <div id="displayResults" class= "row-cols-3 card-deck"></div>
-  
 
-  
+  <div id="displayResults" class="row-cols-3 card-deck"></div>
+
+
+
 
  
 </div>
